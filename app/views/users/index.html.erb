@@ -1,0 +1,30 @@
+<% provide(:title, '従業員一覧') %>
+<h1>従業員一覧</h1>
+
+<%= will_paginate %>
+
+<table id="border-solid">
+    <thead>
+        <tr class="row-1 odd">
+	        <th class="column-1">No</th>
+	        <th class="column-1">社員番号</th>
+	        <th class="column-1">名前</th>
+            <th class="column-1">email</th>
+        </tr>
+    </thead>
+    <tbody class="row-hover">
+        <% @users.each do |a| %>
+            <tr>
+                <td class="column-n"><%= link_to "#{a.id}", "users/#{a.id}" %></td>
+                <td class="column-n"><%= a.emp_no %></td>
+                <td class="column-n"><%= a.name %></td>
+                <td class="column-n"><%= a.email %></td>
+                <% if current_user.admin? && !current_user?(a) %>
+                <td class="column-n"><%= link_to "delete", a, data: { turbo_method: :delete,
+                                                                      turbo_confirm: 'Are you sure?'} %></td>
+                <% end %>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<%= will_paginate %>

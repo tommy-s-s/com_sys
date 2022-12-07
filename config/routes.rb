@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :users
+  get  '/employee',  to: 'users#index'
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
   get '/home', to: 'static_pages#home'
