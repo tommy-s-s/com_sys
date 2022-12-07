@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user, url: signup_path) do |f| %>
+      <%= render 'shared/error_messages' %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+
+        <%= f.label :join_date %>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <%= f.date_select :join_date,
+                             use_month_numbers: true,
+                             start_year: 1930, 
+                             end_year: (Time.now.year), 
+                             default: Date.new(1989, 1, 1) %>
+        </div>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+      <%= f.submit "Create my account", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
