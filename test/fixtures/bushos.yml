@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  busho_no: 1
+  busho_name: MyString
+
+two:
+  busho_no: 1
+  busho_name: MyString
