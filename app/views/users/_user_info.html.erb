@@ -22,6 +22,8 @@
       <%= f.label :部署 %>
       <%= f.collection_select :busho_id, Busho.all, :id, :busho_name %>
 
+      <%= f.label :所属委員会 %>
+      <%= f.collection_select :committee_id, Committee.all, :id, :com_name %>
 
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>

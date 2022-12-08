@@ -1,6 +1,7 @@
 class User < ApplicationRecord
     attr_accessor :remember_token,  :activation_token
     belongs_to  :busho, optional: true
+    belongs_to  :committee, optional: true
     before_save { email.downcase! }
 
     validates :name, presence: true, length: { maximum: 50 }

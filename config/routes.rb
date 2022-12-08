@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :committees
   resources :bushos
   resources :users
   get  '/employee',  to: 'users#index'

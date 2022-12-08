@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_08_011454) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_08_081235) do
   create_table "bushos", force: :cascade do |t|
     t.integer "busho_no"
     t.string "busho_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "committees", force: :cascade do |t|
+    t.string "com_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -30,9 +36,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_011454) do
     t.integer "tel_no"
     t.date "join_date"
     t.integer "busho_id"
+    t.integer "committee_id"
     t.index ["busho_id"], name: "index_users_on_busho_id"
+    t.index ["committee_id"], name: "index_users_on_committee_id"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "users", "bushos"
+  add_foreign_key "users", "committees"
 end
