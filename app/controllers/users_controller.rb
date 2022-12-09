@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                  :password_confirmation, :emp_no, :join_date, :busho_id, :committee_id)
+                                  :password_confirmation, :emp_no, :join_date, :busho_id, :committee_id, :yakushoku_id)
     end
 
     def logged_in_user

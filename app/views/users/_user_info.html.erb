@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user, url: signup_path) do |f| %>
+    <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages' %>
 
       <%= f.label :name %>
@@ -9,6 +9,8 @@
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
 
+      <%= f.label :社員番号 %>
+      <%= f.number_field :emp_no, class: 'form-control' %>
 
         <%= f.label :join_date %><br>
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
@@ -22,6 +24,9 @@
       <%= f.label :部署 %>
       <%= f.collection_select :busho_id, Busho.all, :id, :busho_name %>
 
+      <%= f.label :役職 %>
+      <%= f.collection_select :yakushoku_id, Yakushoku.all, :id, :yaku_name %>
+
       <%= f.label :所属委員会 %>
       <%= f.collection_select :committee_id, Committee.all, :id, :com_name %>
 
@@ -31,7 +36,7 @@
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-      <%= f.submit "Create my account", class: "btn btn-primary" %>
+      <%= f.submit "submit account", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
