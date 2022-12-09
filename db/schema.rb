@@ -33,7 +33,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_09_000300) do
     t.string "remember_digest"
     t.integer "emp_no"
     t.boolean "admin", default: false
-    t.integer "tel_no"
     t.date "join_date"
     t.integer "busho_id"
     t.integer "committee_id"
