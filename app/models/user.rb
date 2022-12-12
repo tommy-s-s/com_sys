@@ -14,6 +14,9 @@ class User < ApplicationRecord
     # user モデルでパスワードハッシュが使用できるようにする
     has_secure_password
     validates :password, presence: true, length: { minimum: 6 } ,allow_nil: true
+
+    #入社年月日必須に変更
+    validates :join_date, presence: true
     
     def User.digest(string)
         cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

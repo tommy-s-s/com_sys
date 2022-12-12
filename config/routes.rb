@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'search/search'
   resources :committees
   resources :bushos
   resources :users
