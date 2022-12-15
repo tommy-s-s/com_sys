@@ -10,9 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_09_000300) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_14_041241) do
   create_table "bushos", force: :cascade do |t|
-    t.integer "busho_no"
     t.string "busho_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -22,6 +21,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_09_000300) do
     t.string "com_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_bushos", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "busho_id", null: false
+    t.date "addbusho_date"
+    t.date "delbusho_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["busho_id"], name: "index_user_bushos_on_busho_id"
+    t.index ["user_id"], name: "index_user_bushos_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,10 +44,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_09_000300) do
     t.integer "emp_no"
     t.boolean "admin", default: false
     t.date "join_date"
-    t.integer "busho_id"
     t.integer "committee_id"
     t.integer "yakushoku_id"
-    t.index ["busho_id"], name: "index_users_on_busho_id"
     t.index ["committee_id"], name: "index_users_on_committee_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["yakushoku_id"], name: "index_users_on_yakushoku_id"
@@ -49,7 +57,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_09_000300) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "users", "bushos"
+  add_foreign_key "user_bushos", "bushos"
+  add_foreign_key "user_bushos", "users"
   add_foreign_key "users", "committees"
   add_foreign_key "users", "yakushokus"
 end

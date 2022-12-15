@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    #bushoを相互登録するため追加↓
+    @user.user_bushos.new
   end
 
   def show
@@ -13,6 +15,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+#    @user = User.new(params[:id])
     if @user.save
       log_in @user
       flash[:succsess] = "succsess create user"
@@ -51,8 +54,15 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:name, :email, :password,
-                                  :password_confirmation, :emp_no, :join_date, :busho_id, :committee_id, :yakushoku_id)
+      params.require(:user).permit(:name,
+                                   :email,
+                                   :password,
+                                   :password_confirmation,
+                                   :emp_no,
+                                   :join_date,
+                                   :committee_id,
+                                   :yakushoku_id,
+                                   user_bushos_attributes: [:id, :busho_id, :addbusho_date, :delbusho_date, :_destroy, :id])
     end
 
     def logged_in_user

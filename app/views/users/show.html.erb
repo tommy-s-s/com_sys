@@ -44,10 +44,10 @@
                       diff_days = d2.day - 1  %>
                   <td class="column-n"><%= "#{diff_years}年#{diff_months}ヶ月#{diff_days}日" %></td>
               </tr>
-              <% if @user.busho %>
+              <% if !@user.user_bushos.empty? %>
                 <tr>
-                    <td class="column-n"><%= "部署名" %></td>
-                    <td class="column-n"><%= @user.busho.busho_name %></td>
+                  <td class="column-n"><%= "部署名" %></td>
+                  <td class="column-n"><%= Busho.find(@user.user_bushos.last.busho_id).busho_name  %></td>
                 </tr>
               <% end %>
         </tbody>

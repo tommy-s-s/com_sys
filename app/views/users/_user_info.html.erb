@@ -9,31 +9,28 @@
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
 
-      <%= f.label :社員番号 %>
+      <%= f.label :emp_no, "社員番号" %>
       <%= f.number_field :emp_no, class: 'form-control' %>
-
-<%
-=begin%>
-        <%= f.label :join_date %><br>
-          <%= f.date_select :join_date,
-                             use_month_numbers: true,
-                             start_year: 1930, 
-                             end_year: (Time.now.year), 
-                             default: Date.new(1989, 1, 1) %> --> 
-<%
-=end%>
        
-      <%= f.label :入社年月日 %><br>
+      <%= f.label :join_date, "入社年月日" %><br>
       <%= f.date_field :join_date %>
 
-        
-      <%= f.label :部署 %>
-      <%= f.collection_select :busho_id, Busho.all, :id, :busho_name %>
+      <%= f.fields_for :user_bushos do |ub| %>
+        <% i = 1 %>
+        <%= ub.label :busho_id, "部署 #{i}" %><br>
+        <%= ub.collection_select :busho_id, Busho.all, :id,:busho_name %>
+        <%= ub.date_field :addbusho_date %>
+        <%= ub.date_field :delbusho_date %>
+          <%= ub.check_box :_destroy %>
 
-      <%= f.label :役職 %>
+                <td class="align-middle p-0"><input type="button" value="削除" onclick="deleteRow(ub)"></td>
+        <% i += 1 %>
+      <% end %>
+
+      <%= f.label :yakushoku_id, "役職" %>
       <%= f.collection_select :yakushoku_id, Yakushoku.all, :id, :yaku_name %>
 
-      <%= f.label :所属委員会 %>
+      <%= f.label :committee_id, "所属委員会" %>
       <%= f.collection_select :committee_id, Committee.all, :id, :com_name %>
 
       <%= f.label :password %>

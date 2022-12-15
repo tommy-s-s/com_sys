@@ -1,6 +1,9 @@
 class User < ApplicationRecord
     attr_accessor :remember_token,  :activation_token
-    belongs_to  :busho, optional: true
+#    belongs_to  :busho, optional: true
+    has_many :user_bushos
+    accepts_nested_attributes_for :user_bushos, allow_destroy: true
+    has_many :bushos, through: :user_bushos
     belongs_to  :committee, optional: true
     belongs_to  :yakushoku, optional: true
     before_save { email.downcase! }
