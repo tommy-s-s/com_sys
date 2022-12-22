@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_14_041241) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_23_000301) do
   create_table "bushos", force: :cascade do |t|
     t.string "busho_name"
     t.datetime "created_at", null: false
@@ -46,6 +46,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_14_041241) do
     t.date "join_date"
     t.integer "committee_id"
     t.integer "yakushoku_id"
+    t.string "liveaddress"
+    t.string "station"
+    t.bigint "salary"
+    t.date "bh_date"
     t.index ["committee_id"], name: "index_users_on_committee_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["yakushoku_id"], name: "index_users_on_yakushoku_id"

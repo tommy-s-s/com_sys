@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  resources :yakushokus
   get 'search/search'
-  resources :committees
   resources :bushos
+  resources :committees
   resources :users
   get  '/employee',  to: 'users#index'
   get '/signup', to: 'users#new'

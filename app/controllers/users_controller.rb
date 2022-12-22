@@ -33,6 +33,9 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    #bushoを相互登録するため追加↓
+    @user.user_bushos.new
+
   end
 
   def update
@@ -62,6 +65,10 @@ class UsersController < ApplicationController
                                    :join_date,
                                    :committee_id,
                                    :yakushoku_id,
+                                   :liveaddress,
+                                   :station,
+                                   :salary,
+                                   :bh_date,
                                    user_bushos_attributes: [:id, :busho_id, :addbusho_date, :delbusho_date, :_destroy, :id])
     end
 
