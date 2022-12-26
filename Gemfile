@@ -17,7 +17,9 @@ gem 'bootstrap-sass'
 gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-
+#add
+gem 'jquery-rails'
+gem 'cocoon'
 
 group :development, :test do
   gem "sqlite3", "~> 1.4"

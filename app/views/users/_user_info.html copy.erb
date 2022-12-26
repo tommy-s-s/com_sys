@@ -87,19 +87,27 @@
       </div>
     </div>
 
-<%# 部署追加　%>
   <%= f.fields_for :user_bushos do |ub| %>
-    <%= render "user_busho_fields", f: ub,
-                                    class: 'btn btn-success' %>
+    <% i = 1 %>
+      <div class="form-group row">
+        <div class="col-md-1 offset-md-3">
+            <%= ub.label :busho_id, "部署 #{i}" %><br>
+            <%= ub.collection_select :busho_id, 
+                                      Busho.all,
+                                      :id,:busho_name,
+                                      class: 'form-select'  %>
+        </div>
+        <div class="col-md-2">
+            <%= f.label :addbusho_date, "所属開始" %><br>
+            <%= ub.date_field :addbusho_date, class: 'form-control' %>
+        </div>
+        <div class="col-md-2">
+            <%= f.label :delbusho_date, "所属終了" %><br>
+            <%= ub.date_field :delbusho_date, class: 'form-control' %>
+        </div>
+      </div>
+    <% i += 1 %>
   <% end %>
-  <div class="links">
-    <%= link_to_add_association "部署を追加", f, :user_bushos,
-                                              class: 'btn btn-success',
-                                              data: {
-                             # data_association_insertion_traversal: 'closest',
-                              association_insertion_method: 'append' } %>
-  </div>
-
 
     <div class="form-group row">
       <div class="col-md-6 offset-md-3">

@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     #bushoを相互登録するため追加↓
-    @user.user_bushos.new
+    @user.user_bushos.build
   end
 
   def show
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     #bushoを相互登録するため追加↓
-    @user.user_bushos.new
+    @user.user_bushos.build
 
   end
 
